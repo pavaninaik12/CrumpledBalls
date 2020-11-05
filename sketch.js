@@ -7,33 +7,38 @@ const Render = Matter.Render;
 
 var ground;
 
-var bin1,bin2,bin3;
+var bin1;
 
 var paper;
-var paperImg
+var engine,world;
 
-function preload()
-{
-paperImage = loadImage("paper.png");	
-}
 
 function setup() {
-	createCanvas(800, 700);
-
+	createCanvas(1600, 700);
+    rectMode(CENTER);
 
 	engine = Engine.create();
 	world = engine.world;
 
 	//Create the Bodies Here.
-
-	ground = new Ground(400,700,800,20);
-
-	bin1 = new Bin(600,680);
-
-
-    paper = new Paper(50,690,20);
-    paper.body.addImage(paperImage);
+    // I have changed the x and width of the ground object
+	bin1 = new Bin(1200,650);
 	
+    paper = new Paper(200,450,40);
+	ground = new Ground(width/2,670,width,20);
+
+
+    
+   // create your render options
+	var render = Render.create({
+		element: document.body,
+		engine: engine,
+		options: {
+		  width: 1200,
+		  height: 700,
+		  wireframes: false
+		}
+	  });
 
 	Engine.run(engine);
   
@@ -43,20 +48,20 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background(225);
-  
-  drawSprites();
+  background(0);
+  //no need of drawSprites as we arent creating any sprites
+ // drawSprites();
  
-  ground.display();
+  
 
   
 
   bin1.display();
 
 
-paper.display();
+   paper.display();
 
-
+   ground.display();
 
 }
 

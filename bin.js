@@ -20,7 +20,7 @@ class Bin
 		World.add(world, this.leftWallBody)
 		World.add(world, this.rightWallBody);
 
-        this.image = loadImage("dustbingreen.png");		
+       		
 	}
 	display()
 	{
@@ -59,7 +59,7 @@ class Bin
 			stroke(255)
 			angleMode(RADIANS)
 			fill(255)
-			image(this.image,0,0,this.dustbinWidth, this.wallThickness);
+			rect(0,0,this.dustbinWidth, this.wallThickness);
 			pop()
 			
 	}

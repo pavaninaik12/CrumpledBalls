@@ -10,7 +10,7 @@ class Paper {
     this.x =x;
     this.y =y;
     this.r =r;
-    this.body = Matter.Bodies.circle(this.x, this.y, this.r/2, [options]);
+    this.body = Matter.Bodies.circle(this.x, this.y, this.r/2, options);
     World.add(world,this.body);
    
    
@@ -18,13 +18,14 @@ class Paper {
     }
     
     display(){
-        var pos = this.body.position;
-push()
-translate(pos.x,pos.y)
-        ellipseMode(CENTER);
-        fill(rgb(0,0,0));
+        var paperpos = this.body.position;
+        push()
+        translate(paperpos.x,paperpos.y)
+        rectMode(CENTER);
+        strokeWeight(3);
+		fill(255,0,255)
         ellipse(0,0,this.r,this.r);
         
-pop()
+        pop()
     }
-    }
+}
