@@ -1,5 +1,5 @@
 class Paper { 
-    constructor(x,y){
+    constructor(x,y,r){
     
     var options = {
         isStatic: false,
@@ -7,20 +7,24 @@ class Paper {
         friction : 0.5,
         density : 1.2
     }
-    
-    this.body = Matter.Bodies.circle(x, y, 10, [options], [50]);
+    this.x =x;
+    this.y =y;
+    this.r =r;
+    this.body = Matter.Bodies.circle(this.x, this.y, this.r/2, [options]);
     World.add(world,this.body);
-    this.width = 20;
-    this.height = 20;
-
-    this.image = loadImage("paper");
+   
+   
+    
     }
     
     display(){
         var pos = this.body.position;
-        imageMode(CENTER);
-        image(this.image,pos.x,pos.y,this.width,this.height);
-
+push()
+translate(pos.x,pos.y)
+        ellipseMode(CENTER);
+        fill(rgb(0,0,0));
+        ellipse(0,0,this.r,this.r);
         
+pop()
     }
     }

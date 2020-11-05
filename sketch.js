@@ -3,18 +3,18 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Render = Matter.Render;
 
 var ground;
 
 var bin1,bin2,bin3;
 
 var paper;
+var paperImg
 
 function preload()
 {
-	dustbinImage = loadImage("dustbingreen.png");
-
-	paperImage = loadImage("paper.png");
+paperImage = loadImage("paper.png");	
 }
 
 function setup() {
@@ -28,17 +28,16 @@ function setup() {
 
 	ground = new Ground(400,700,800,20);
 
-	bin1 = new Bin(600,640,10,100);
-	bin2 = new Bin(700,640,10,100);
-	bin3 = new Bin(650,690,100,10);
-	
+	bin1 = new Bin(600,680);
 
-	paper = new Paper(50,690);
-	
+
+    paper = new Paper(50,690,20);
+    paper.body.addImage(paperImage);
 	
 
 	Engine.run(engine);
   
+	
 }
 
 
@@ -53,8 +52,7 @@ function draw() {
   
 
   bin1.display();
-  bin2.display();
-  bin3.display();
+
 
 paper.display();
 
